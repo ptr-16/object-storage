@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio  
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - minio-net
+
+  python-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-python-minio
+    depends_on:
+      - minio
+    environment:
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: admin123
+    # command: ["ruff", "check", "."]- i run it before
+    command: ["python", "minioClient.py"]
+    networks:
+      - minio-net
+
+networks:
+  minio-net:
+    driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
