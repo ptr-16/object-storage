@@ -8,6 +8,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+RUN ruff check . --fix && \
+pip install --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
 
-CMD ["python", "minioClient.py"]
+CMD ["sh", "-c", "ruff check . --fix && python minioClient.py"]
