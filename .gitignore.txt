@@ -1,0 +1,14 @@
+# Environment variables
+Object-Storaje/mino-though-docker/Interact with miniO/.env
+
+# Python cache and dependencies
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,69 @@
+ Task  Object Storage
+******************************************1*****************************************************
+The differences between distributed file systems and object storage
+are:
+
+In a distributed file system, files are organized in a hierarchy of folders, while object storage systems are more like a "key-value store", where objects are organized in flat buckets.
+File systems are designed to allow random writes anywhere in a file. Object storage systems only allow atomic replacement of entire objects.
+Object storage systems provide eventual consistency,
+while distributed file systems can support either strong consistency or eventual consistency (depending on the vendor).
+
+in Distributed File Systems (DFS):
+Pros: Familiar, random writes, immediate consistency.
+Cons: Complex at massive scale, less flexible for web
+
+in Object Storage:
+Pros: Massive scalability, cost-effective, high durability, web access.
+Cons: Not for partial random writes, eventual consistency.
+
+*****************************************2******************************************************
+What is Amazon S3?
+
+ Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security,
+ and performance. Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, 
+such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices,
+ and big data analytics. Amazon S3 provides management features so that you can optimize, organize, 
+and configure access to your data to meet your specific business, organizational, and compliance requirements.
+
+****************************************3******************************************************* 
+What is a Bucket?
+
+A bucket is a logical container that holds objects (files along with their 
+associated metadata). You can think of it as a giant virtual folder where all files are stored—but unlike
+traditional folders, it doesn't have a hierarchical structure with subfolders. Instead, all objects are stored
+ in a flat namespace within the same bucket.
+
+***************************************4******************************************************
+In Amazon S3, there are no "folders" in the traditional sense
+
+"Folders" are an Illusion: The "folders" seen in the S3 Management Console are just a visual way
+ to organize the objects. This works because S3 identifies a shared prefix in the object names and 
+ displays it as a folder.
+ Example: If you have an object named photos/myphoto.jpg, S3 sees this as one complete object name.
+ The console displays a "photos folder" because the name starts with "photos/".
+
+**************************************5******************************************************
+Are there size limitations in S3? How do they compare to classic file systems?
+
+Single Object: Up to 5 terabytes (TB).
+Bucket (Overall): No size limit; can store an unlimited amount of data.
+Compared to Classic File Systems:
+
+Limited by Physical/Logical Size: Dependent on the size of the disk or partition.
+Internal Limitations: Have theoretical caps on single file size (e.g., FAT32 is limited to 4GB) and overall file system size.
+Key Difference (S3 Advantage):
+Nearly Unlimited Scalability: S3 scales automatically as needed, without requiring prior planning or disk expansion, unlike classic file systems which have physical and theoretical limits. It's ideal for storing very large files and unpredictable data growth.
+
+************************************6********************************************************
+Common S3 Use Cases:
+
+1 Backup & Archive: Secure, cost-effective long-term storage (including versions).
+2 Static Websites: Simple, fast hosting for HTML/CSS/JS sites.
+3 Application Data: Reliable storage for web/mobile/log data.
+4 Data Lakes: Foundation for raw big data storage.
+5Content Delivery (CDN): Data source for faster global content delivery.
+6 IoT Data: Efficient ingestion and storage for device data.
+7 DevOps: Store software artifacts, builds, and manage versions (CI/CD).
+
+*************************************************************************************************
+                                                                
