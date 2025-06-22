@@ -1,0 +1,3 @@
+minio
+ruff
+python-dotenv
