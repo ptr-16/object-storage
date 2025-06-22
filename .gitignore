@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # IDE related files
 .vscode/
 .idea/
@@ -35,3 +36,11 @@ Object-Storage/mino-though-docker/data/
 *.log
 tmp/
 temp/
+=======
+__pycache__/ 
+*.pyc 
+*.log
+.vscode/
+.env
+ruff_cache/
+>>>>>>> b29e72e39e2a87ed59c70f0cd9bea674c137aa60
