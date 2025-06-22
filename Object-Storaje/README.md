@@ -1,5 +1,5 @@
  Task  Object Storage
-******************************************1*****************************************************
+******************************************1**
 The differences between distributed file systems and object storage
 are:
 
@@ -16,7 +16,7 @@ in Object Storage:
 Pros: Massive scalability, cost-effective, high durability, web access.
 Cons: Not for partial random writes, eventual consistency.
 
-*****************************************2******************************************************
+*****************************************2***
 What is Amazon S3?
 
  Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security,
@@ -25,7 +25,7 @@ such as data lakes, websites, mobile applications, backup and restore, archive, 
  and big data analytics. Amazon S3 provides management features so that you can optimize, organize, 
 and configure access to your data to meet your specific business, organizational, and compliance requirements.
 
-****************************************3******************************************************* 
+****************************************3**
 What is a Bucket?
 
 A bucket is a logical container that holds objects (files along with their 
@@ -33,7 +33,7 @@ associated metadata). You can think of it as a giant virtual folder where all fi
 traditional folders, it doesn't have a hierarchical structure with subfolders. Instead, all objects are stored
  in a flat namespace within the same bucket.
 
-***************************************4******************************************************
+***************************************4***
 In Amazon S3, there are no "folders" in the traditional sense
 
 "Folders" are an Illusion: The "folders" seen in the S3 Management Console are just a visual way
@@ -42,7 +42,7 @@ In Amazon S3, there are no "folders" in the traditional sense
  Example: If you have an object named photos/myphoto.jpg, S3 sees this as one complete object name.
  The console displays a "photos folder" because the name starts with "photos/".
 
-**************************************5******************************************************
+**************************************5**
 Are there size limitations in S3? How do they compare to classic file systems?
 
 Single Object: Up to 5 terabytes (TB).
@@ -54,7 +54,7 @@ Internal Limitations: Have theoretical caps on single file size (e.g., FAT32 is 
 Key Difference (S3 Advantage):
 Nearly Unlimited Scalability: S3 scales automatically as needed, without requiring prior planning or disk expansion, unlike classic file systems which have physical and theoretical limits. It's ideal for storing very large files and unpredictable data growth.
 
-************************************6********************************************************
+************************************6**
 Common S3 Use Cases:
 
 1 Backup & Archive: Secure, cost-effective long-term storage (including versions).
@@ -65,5 +65,4 @@ Common S3 Use Cases:
 6 IoT Data: Efficient ingestion and storage for device data.
 7 DevOps: Store software artifacts, builds, and manage versions (CI/CD).
 
-*************************************************************************************************
                                                                 
