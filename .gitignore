@@ -1,33 +1,37 @@
-# IDE related files (Visual Studio Code, IntelliJ, etc.)
+# IDE related files
 .vscode/
 .idea/
 *.iml
 *.iws
-.DS_Store # macOS specific files
 
-# Python related files
+# OS
+.DS_Store
+
+# Python
 __pycache__/
 *.pyc
-*.pyd
 *.pyo
-venv/ # Virtual environments
+*.pyd
 .venv/
+venv/
+.Python
 .pytest_cache/
 .coverage
 htmlcov/
-.Python
-# For Jupyter notebooks
+
+# Jupyter
 .ipynb_checkpoints/
 
-# Environment variables
+# Env variables
 .env
 
-# This will ignore GitHub_Projects/object-storage/Object-Storage/mino-though-docker/data/
-Object-Storaje/mino-though-docker/data/
 # Ruff cache
 .ruff_cache/
 
-# Any specific logs or temporary files
+# Docker / project data
+Object-Storage/mino-though-docker/data/
+
+# Logs / temp
 *.log
 tmp/
 temp/
