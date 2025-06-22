@@ -82,11 +82,13 @@ def Read_Data_Of_Exist_Object(OBJECT_KEY):
     try:
         response = s3.get_object(Bucket=BUCKET_NAME, Key=OBJECT_KEY)
         object_data = response['Body'].read()
-        logging.info(f"Object data: {object_data.decode('utf-8')}") # Decode if it's text
-    except s3.exceptions.NoSuchKey:
-        logging.info(f"Object '{OBJECT_KEY}' not found in bucket '{BUCKET_NAME}'.")
+        logging.info(f"Object data: {object_data.decode('utf-8')}")
     except Exception as e:
-        logging.info(f"An error occurred: {e}")
+        if type(e).__name__ == "NoSuchKey":
+            logging.info(f"Object '{OBJECT_KEY}' not found in bucket '{BUCKET_NAME}'.")
+        else:
+            logging.info(f"An error occurred: {e}")
+
 
 """3"""
 def Remove_Exist_Object(OBJECT_KEY):

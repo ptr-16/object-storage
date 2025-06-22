@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   minio:
@@ -27,6 +27,20 @@ services:
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     command: sh -c "ruff check . --fix && python minioClient.py"
+    networks:
+      - minio-net
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-runner
+    depends_on:
+      - minio
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    command: sh -c "ruff check . --fix && python -m unittest test_read_data.py"
     networks:
       - minio-net
 
