@@ -4,16 +4,23 @@ import boto3
 import uuid
 import random
 import string
-ACCSESS_KEY="minioadmin"
-SECRET_KEY="minioadmin"
-ENDPOINT_URL="http://localhost:9000"
-BUCKET_NAME="firstbucket"
+from dotenv import load_dotenv
+import os
+import logging
+logging.basicConfig(level=logging.INFO)
+import unittest
+load_dotenv()
+
+ACCESS_KEY = os.getenv("ACCESS_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
+ENDPOINT_URL = os.getenv("ENDPOINT_URL")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+
 s3 = boto3.client(
     's3',
     endpoint_url=ENDPOINT_URL,
-    aws_access_key_id=ACCSESS_KEY,
+    aws_access_key_id=ACCESS_KEY,
     aws_secret_access_key=SECRET_KEY
-
 )
 #Randomly create new object 
 try:
@@ -30,34 +37,34 @@ def list_objects(bucket_name):
         response = s3.list_objects_v2(Bucket=bucket_name)
         contents = response.get('Contents', [])
         if not contents:
-            print("The bucket is empty.")
+            logging.info("The bucket is empty.")
         else:
-            print("Objects in bucket:")
+            logging.info("Objects in bucket:")
             for obj in contents:
-                print(f"- {obj['Key']}")
+                logging.info(f"- {obj['Key']}")
     except Exception as e:
-        print(f"Error listing objects in bucket '{bucket_name}': {e}")
+        logging.info(f"Error listing objects in bucket '{bucket_name}': {e}")
 #Read the data of an existing object.
 def read_object(bucket_name, key_name):
     try:
         response = s3.get_object(Bucket=bucket_name, Key=key_name)
         content = response['Body'].read().decode('utf-8')
-        print("Object content:")
-        print(content)
+        logging.info("Object content:")
+        logging.info(content)
     except s3.exceptions.NoSuchKey:
-        print(f"Error: The key '{key_name}' does not exist in bucket '{bucket_name}'.")
+        logging.info(f"Error: The key '{key_name}' does not exist in bucket '{bucket_name}'.")
     except Exception as e:
-        print(f"Failed to read object: {e}")
+        logging.info(f"Failed to read object: {e}")
 
 
 def remove_object(bucket_name, key_name):
     try:
         s3.delete_object(Bucket=bucket_name, Key=key_name)
-        print(f"the object'{key_name}' remove from the bucket'{bucket_name}'")
+        logging.info(f"the object'{key_name}' remove from the bucket'{bucket_name}'")
     except s3.exceptions.NoSuchKey:
-        print(f"the file:'{key_name}' not found in the bucket'{bucket_name}'")
-    except Exception as e:
-        print(f"Error deleting file from bucket")
+        logging.info(f"the file:'{key_name}' not found in the bucket'{bucket_name}'")
+    except Exception:
+        logging.info("Error deleting file from bucket")
 #Update an existing object 
 def update_object(KeyName, BucketName):
     """
@@ -67,11 +74,11 @@ def update_object(KeyName, BucketName):
     """
     try:
         s3.put_object(Bucket=BucketName, Key=KeyName, Body='update content')
-        print(f"the file:'{KeyName}'Updated successfully'{BucketName}'")
-        response = s3.get_bucket_versioning(Bucket=BucketName)
-        print(f"The file '{KeyName}' was updated successfully in bucket '{BucketName}'.")
+        logging.info(f"the file:'{KeyName}'Updated successfully'{BucketName}'")
+        s3.get_bucket_versioning(Bucket=BucketName)
+        logging.info(f"The file '{KeyName}' was updated successfully in bucket '{BucketName}'.")
     except Exception as e:
-        print(f"Error updating file from bucket {e}")
+        logging.info(f"Error updating file from bucket {e}")
 #Summoning functions      
 list_objects(BUCKET_NAME)
 read_object(BUCKET_NAME, "some_object_key.txt")

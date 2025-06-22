@@ -1,82 +1,107 @@
-research:
-1.//Briefly research the key differences between object storage and other forms of distributed storages. Make note of advances and disadvantages of each.
-אחסון אובייקטים:
-שונה ממערכות קבצים אחסון אובייקט אינו בנוי על היררכיה של תקיות ותתי תקיות,
-א באופן שטוח לכל יחידת מידע-אוביקט,
-ל אוביקט מכיל מידע ומספר מזהה,המאפשר גישה ישרה ע"פ מזהה ולא ע"פ מיקום פיזי בדיסק,
-ר המאפשר גישה מהירה  לכל אוביקט  רק עפ"י שימוש במזהה היחודי לאבוקיט.
-רונות:
+Research:
 
-סון כמטע אינסופי של נתונים-בזכות המבנה השטוח ניתן לאחסן כמוית עצומות של מידע
+Briefly research the key differences between object storage and other forms of distributed storages. Make note of advantages and disadvantages of each.
 
-מוש במטא דאתא- מאפשר חיפוש ושליפה מהירים לפי תכונות האובייקט, מבלי לעבור על כל תונים.
-.
-מידות גבוהה-
-נתונים משוכפלים ומופצים על פני מספר צמתים, כך שגם במקרה של כשל ניתן לשחזר מידע.
-.
-סכון עלויות - מערכות אחסון אוביקט  אינן דורשות שרתי אחסון יקרים, 
-ולרוב משתמשות בכונני דיסק קשיח בעלות נמוכה.
-סרונות:
-.איטיות בגשה לנתונים-במיוחד כאשר נדרש עיבוד ישיר או עדכון תכוף
-.עלויות-כאשר יש צורך בגישה תכופה לנתונים או בכמות גדולה של נתונים 
-.אבטחת מידע-כאשר מדובר באחסון ענן ,קיימת חשיפה של מידע רגיש ונדרשת אבטחה גבוהה
-.תלות בספק-דבר שמקשה על מעבר לספק אחר או לשדרוג למערכת אחרת .
-חסון מבוזר:
-מערכת מבוזרת הצמתים מפוזרים פיזית ,ועשויים להיות במיקומים גאוגרפיים שונים,
-חוברים דרך רשת, לכל צומת יש זיכרון  ממעבד משלו,הצתמתים משתפים פעולה בעיבוד מידע.
-תרונות:
-.
-דרגיות  – ניתן להוסיף צמתים לפי הצורך,
- כדי להתמודד עם גידול בכמות הנתונים או בדרישות הביצועים.
-. עמידות-אם צומת או רכיב נכשל,
- המערכת יכולה להמשיך לפעול על ידי חלוקה מחדש של  העבודה לצמתים אחרים.
-.
-יצועים ומהירות-שיפור הביצועים ע"י חלוקת המשימות למספר צמתים,
-בגלל היכולת לעיבוד מקבילי המערכות יכולות להשיג תפוקה גבוהה יותר.
-.
-גמישות-ניתן להוסיף או להסיר צמתים באופן דינמי בהתאם לצורך.,
-.
-לות-ע"י ביזור ניתן להגיע לניצול יעיל של משאבים,
-מו  חלוקת עומסי עבודה על פני מספר צמתים זולים,
-.
-וסן-מערכות מבוזרות מסוגלות להסתגל לשינויים ולתקלות בצורה יציבה.
-סרונות:
-.
-סיבוכיות-מעבר למהירות העיבוד של המחשב
- .רשת התקשורת יכולה גם היא לפגוע בביצועים ולהשפיע על המהירות
-.
-בטחה-בשל התקשורת של הצמתים ע"י רשת תקשורת נידרשת אבטחה גבוהה
-.
-ילוב של מערכות הפעלה, גרסאות תוכנה ותקשורת בין רכיבים שונים מקשה על ניהול המערכת.
-.
-תנהגות בלתי צפויה- קשה לצפות את תגובתה של המערכת ,
-י היא תלויה בעומס כללי על המערכת,ובעומס רשת התקשורת שלה,
-לכן לא ניתן להסיק ממהירות התגובה לפנייה למערכת לגבי המהירות בה תענה הפנייה הבאה.
-סיכום ההבדלים:
-חסון אובייקטים מצטיין באחסון ארוך־טווח של כמויות מידע גדולות ובחיפושים יעילים,
- אך פחות מתאים לעיבוד תכוף או ביצועים גבוהים.
-חסון מבוזר נועד לספק ביצועים, חוסן וגמישות, אך דורש תחזוקה מורכבת ותשתיות מתקדמות.
-.//What is S3?
-3 הוא שירות אחסון ענן של AWS.
-וא מבוסס על אחסון אובייקטים במבנה שטוח – כל אובייקט מזוהה ע"י מפתח ייחודי שנקבע "י המשתמש
-תכונותיו העיקריות:מדרגיות גבוהה,זמינות גבוהה,אבטחה מתקדמת,ועוד
-3.//What is a *bucket*?
- ב־S3, bucket הוא מיכל אחסון שבו נשמרים אובייקטים.
- לכל אובייקט יש מזהה ייחודי בתוך ה־ bucket.
- ה־bucket הוא מבנה שטוח (לא היררכי) – לא ניתן ליצור bucket בתוך bucket.
- הוא משמש כיחידת ניהול בסיסית – אפשר להגדיר בו הרשאות, מדיניות אחסון ואבטחה.
-4.Does the concept of *folders* exist in S3?
-אין הררכיות תקיות ב-S3 בהתאם לשמירת נתוני אוביקטים,
-האחסון הוא במבנה שטוח של אובייקטים, אך ניתן ליצור מפתחות  עם שמות שנראים כמו תיקיות
-5.//Are there size limitations? How do they compare to classic filesystem?
-ב־S3 כל אובייקט יכול להגיע עד 5TB. העלאה ישירה מוגבלת ל־5GB
-ניתן להחזיק מספר בלתי מוגבל של קבצים
-6.//What implementations of S3 are there?
-ישנם שימושים רבים:
-גיבויים,התאוששות מאסון,אחסון נתונים ארכיונים בעלות נמוכה,
-הפצת תוכן,פיתוח נסוי ובדיקות ועוד
-7.//Deploy a working instance of [MinIO](https://min.io/) using docker.
-הרצתי דוקר דרך ה-VS code
-זה הטרמינל:
-PS C:\הנדסת תוכנה 1 תשפ''ה\פרקטיקום\משימות\task3\object-storage> docker run -p 9000:9000 -p 9001:9001 --name minio -e "MINIO_ROOT_USER=minioadmin" -e
- "MINIO_ROOT_PASSWORD=minioadmin" quay.io/minio/minio server /data --console-address ":9001"
+Object Storage:
+Unlike file systems, object storage is not built on a hierarchy of folders and subfolders.
+
+Each data unit—called an object—exists on a flat structure.
+
+An object contains data and a unique identifier, allowing direct access by ID instead of physical location on disk.
+
+This enables fast access to each object by using its unique key.
+
+Advantages:
+
+Virtually unlimited scalability: Thanks to the flat structure, enormous amounts of data can be stored.
+
+Rich metadata usage: Enables fast search and retrieval based on object attributes, without scanning all the data.
+
+High reliability: Data is replicated and distributed across multiple nodes, so even in case of failure, it can be recovered.
+
+Cost efficiency: Object storage systems don’t require expensive storage servers and often use low-cost hard drives.
+
+Disadvantages:
+
+Slower data access: Especially when frequent processing or updates are required.
+
+Costly with frequent access: When frequent data retrieval is needed or when storing large data volumes.
+
+Security risks: With cloud storage, sensitive data is exposed and requires high-level security.
+
+Vendor lock-in: Makes migration to other providers or systems difficult.
+
+Distributed Storage:
+A distributed system consists of nodes that are physically dispersed and may be located in different geographic regions.
+They connect through a network, and each node has its own memory and processor. The nodes cooperate in data processing.
+
+Advantages:
+
+Scalability: Nodes can be added as needed to handle growing data or performance demands.
+
+Resilience: If a node or component fails, the system continues by redistributing tasks.
+
+Performance: Enhanced through parallel processing across nodes, enabling higher throughput.
+
+Flexibility: Nodes can be dynamically added or removed as needed.
+
+Cost efficiency: Resource utilization is improved by distributing workloads across multiple low-cost nodes.
+
+Robustness: Distributed systems adapt well to changes and failures.
+
+Disadvantages:
+
+Complexity: Beyond individual computer speed, network communication may affect performance.
+
+Security: Due to node communication over networks, high-level security is required.
+
+System heterogeneity: Different OS versions, software, and hardware make system management harder.
+
+Unpredictable behavior: The system's response depends on overall load and network traffic, so one response time cannot predict the next.
+
+Summary of Differences:
+Object storage excels at long-term storage of large data volumes and efficient searching,
+but is less suitable for frequent processing or high performance.
+Distributed storage is designed to deliver performance, resilience, and flexibility, but requires complex maintenance and advanced infrastructure.
+
+2. What is S3?
+S3 is Amazon Web Services’ cloud storage service.
+It is based on object storage with a flat structure—each object is identified by a unique key defined by the user.
+Main features include high scalability, high availability, advanced security, and more.
+
+3. What is a bucket?
+In S3, a bucket is a storage container where objects are stored.
+Each object has a unique identifier within the bucket.
+The bucket uses a flat (non-hierarchical) structure—you cannot create a bucket inside another bucket.
+It is the basic unit of management—you can define permissions, storage policies, and security settings on it.
+
+4. Does the concept of folders exist in S3?
+S3 has no true directory hierarchy.
+Storage is based on flat object structure. However, you can simulate folders by using keys that contain slashes (/) to represent folder-like paths.
+
+5. Are there size limitations? How do they compare to classic filesystems?
+In S3, each object can be up to 5TB.
+Direct upload is limited to 5GB, but multipart upload enables larger files.
+You can store an unlimited number of objects.
+
+6. What implementations of S3 are there?
+S3 is used for many purposes:
+
+Backups
+
+Disaster recovery
+
+Low-cost archival storage
+
+Content distribution
+
+Development, testing, and more
+
+7. Deploy a working instance of MinIO using Docker.
+I ran MinIO using Docker through VS Code.
+This is the terminal output:
+
+bash
+Copy
+Edit
+PS C:\הנדסת תוכנה 1 תשפ''ה\פרקטיקום\משימות\task3\object-storage> docker run -p 9000:9000 -p 9001:9001
