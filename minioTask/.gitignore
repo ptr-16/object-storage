@@ -2,3 +2,5 @@
 .ruff_cache
 .dockerignore
 requirements.txt
+.env
+ENV
