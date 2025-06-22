@@ -1,14 +1,39 @@
-# Environment variables
-Object-Storaje/mino-though-docker/Interact with miniO/.env
+# IDE related files (Visual Studio Code, IntelliJ, etc.)
+.vscode/
+.idea/
+*.iml
+*.iws
+.DS_Store # macOS specific files
 
-# Python cache and dependencies
+# Python related files
 __pycache__/
 *.pyc
-.pytest_cache/
-.mypy_cache/
+*.pyd
+*.pyo
+venv/ # Virtual environments
 .venv/
-venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.Python
+# For Jupyter notebooks
+.ipynb_checkpoints/
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Environment variables
+.env
+
+# Docker related files that are usually temporary or generated
+# The 'data' folder for MinIO storage, relative to the .gitignore location.
+# This will ignore GitHub_Projects/object-storage/Object-Storage/mino-though-docker/data/
+Object-Storage/mino-though-docker/data/ 
+
+# Ruff cache
+.ruff_cache/
+
+# Any specific logs or temporary files
+*.log
+tmp/
+temp/
+
+# Screenshots directory (if it's not part of the core project content)
+Object-Storage/mino-though-docker/Screenshots/
