@@ -22,11 +22,8 @@ htmlcov/
 # Environment variables
 .env
 
-# Docker related files that are usually temporary or generated
-# The 'data' folder for MinIO storage, relative to the .gitignore location.
 # This will ignore GitHub_Projects/object-storage/Object-Storage/mino-though-docker/data/
-Object-Storage/mino-though-docker/data/ 
-
+Object-Storaje/mino-though-docker/data/
 # Ruff cache
 .ruff_cache/
 
@@ -34,6 +31,3 @@ Object-Storage/mino-though-docker/data/
 *.log
 tmp/
 temp/
-
-# Screenshots directory (if it's not part of the core project content)
-Object-Storage/mino-though-docker/Screenshots/
