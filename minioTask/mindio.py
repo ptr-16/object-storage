@@ -90,11 +90,12 @@ def update_object(bucket_name, object_name):
         "if the update is flawed or unintended.")
     except S3Error as exc:
         logger.error(f"Error updating object: {exc}")
-add_object(bucket_name, object_name)
-list_objects(bucket_name)
-get_object(bucket_name, object_name)
-delete_object(bucket_name, object_name)
-list_objects(bucket_name)
-update_object(bucket_name, object_name)
-list_objects(bucket_name)
+if __name__ == "__main__":
+    add_object(bucket_name, object_name)
+    list_objects(bucket_name)
+    get_object(bucket_name, object_name)
+    delete_object(bucket_name, object_name)
+    list_objects(bucket_name)
+    update_object(bucket_name, object_name)
+    list_objects(bucket_name)
 
