@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: chani
+      MINIO_ROOT_PASSWORD: 1234567890
+    volumes:
+      - ./data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - minio-network
+
+  app:
+    build:
+      context: ./Interact with minIO
+      dockerfile: Dockerfile
+    container_name: mino-app
+    ports:
+      - "8000:8000"
+    environment:
+      # אלה השמות שאת רוצה להשתמש בהם בקוד הפייתון שלך (os.getenv)
+      # וגם בקובץ ה-.env שלך
+      MINIO_ENDPOINT_URL: http://minio:9000
+      MINIO_ACCESS_KEY_ID: chani
+      MINIO_SECRET_KEY: 1234567890
+      MINIO_BUCKET_NAME: my-bucket
+    volumes:
+      - ./Interact with minIO:/app
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - minio-network
+    command: tail -f /dev/null # <-- שורה זו נוספה
+    stdin_open: true           # <-- שורה זו נוספה
+    tty: true                  # <-- שורה זו נוספה
+
+networks:
+  minio-network:
+    name: minio-network
