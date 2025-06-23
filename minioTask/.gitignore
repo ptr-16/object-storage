@@ -1,0 +1,9 @@
+.vscode
+.ruff_cache
+.dockerignore
+requirements.txt
+.env
+ENV
+__pycache__
+.vscode
+.pytest_cache
